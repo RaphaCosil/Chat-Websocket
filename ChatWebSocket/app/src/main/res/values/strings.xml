@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">hello</string>
+    <string name="send">send</string>
+    <string name="enter_your_message">enter your message</string>
+    <string name="disconnect">disconnect</string>
+    <string name="connect">connect</string>
+</resources>
