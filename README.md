@@ -1,4 +1,4 @@
-# Web Socket Study - Hello
+# Hello - Web Socket Study
 Hello is a simple chat app!
 
 <p>I did this project to apply my knowledge on WebSocket.</p>
