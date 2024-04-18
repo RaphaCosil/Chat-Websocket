@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "237225710669",
+    "project_id": "hello-chat-3faa5",
+    "storage_bucket": "hello-chat-3faa5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:237225710669:android:f70776aa0cb549f66ab804",
+        "android_client_info": {
+          "package_name": "com.example.chatwebsocket"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWsK_CMbVoCIzhFDpLZEwwf9JXvaXpgwM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
