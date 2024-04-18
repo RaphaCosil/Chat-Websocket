@@ -7,4 +7,5 @@ Hello is a simple chat app!
 <p> I'm using <a href= https://piehost.com/piesocket>PieSocket</a> to host this, using the Free Cluster, so it can suport 0.2 million messages per day and 200 concurrent connections.</p>
 <img src="https://github.com/RaphaCosil/Web-Socket-Study/tree/main/images/message-pic.png" alt= "Message Screen - Image">
 <p>I haven't tested what happens when you go over the limit, but probably the server crashes(obviously).</p>
+<p>I also used Google's <a href= "https://firebase.google.com/?hl=pt">Firebase</a> to save and retrieve saved messages.</p>
 <p>You can clone the project and build to talk with other people!</p>
