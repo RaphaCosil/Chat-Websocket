@@ -49,15 +49,7 @@ class MainActivity : AppCompatActivity() {
                     for (childSnapshot in dataSnapshot.children) {
                         val databaseValue = childSnapshot.getValue(String::class.java)
                         val messageDataDatabase= databaseValue?.let {utils.dismayedJson(it) }
-                        var oldText=""
-                        if(messageDataDatabase?.username==username) {
-                            oldText =
-                                binding.textMessages.text.toString() + ">You: ${messageDataDatabase?.message}\n"
-                        }
-                        else{
-                            binding.textMessages.text.toString() + ">${messageDataDatabase?.username}: ${messageDataDatabase?.message}\n"
-
-                        }
+                        val oldText =binding.textMessages.text.toString() + ">${messageDataDatabase?.username}: ${messageDataDatabase?.message}\n"
                         binding.textMessages.text= oldText
                     }
                 }
