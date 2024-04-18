@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity() {
         val database = Firebase.database
         val reference = database.getReference("messages")
 
-
         reference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -56,7 +55,7 @@ class MainActivity : AppCompatActivity() {
             }
             override fun onCancelled(error: DatabaseError) = Unit
         })
-
+        //Calling connect method
         if (username != null) {
             if (roomId != null) {
                 connectWebSocket(roomId, username)
