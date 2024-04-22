@@ -14,20 +14,23 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.buttonLogin.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            if(binding.editTextIdRoom.text.isNotEmpty()){
-                intent.putExtra("room", (binding.editTextIdRoom.text.toString()))
-            }
-            else{
-                intent.putExtra("room", "1")
-            }
-            if(binding.editTextUserNameLogin.text.isNotEmpty()) {
-                intent.putExtra("username", binding.editTextUserNameLogin.text.toString())
-                startActivity(intent)
-            }
-            else{
-                Toast.makeText(this, "Type an username", Toast.LENGTH_SHORT).show()
-            }
+            sendForms()
+        }
+    }
+    private fun sendForms(){
+        val intent = Intent(this, MainActivity::class.java)
+        if(binding.editTextIdRoom.text.isNotEmpty()){
+            intent.putExtra("room", (binding.editTextIdRoom.text.toString()))
+        }
+        else{
+            intent.putExtra("room", "1")
+        }
+        if(binding.editTextUserNameLogin.text.isNotEmpty()) {
+            intent.putExtra("username", binding.editTextUserNameLogin.text.toString())
+            startActivity(intent)
+        }
+        else{
+            Toast.makeText(this, "Type an username", Toast.LENGTH_SHORT).show()
         }
     }
 }

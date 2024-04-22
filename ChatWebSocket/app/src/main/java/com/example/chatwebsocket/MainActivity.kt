@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var webSocketListener: WebSocketListener
-    private lateinit var mainViewModel: MainViewModel
+    private lateinit var mainViewModel: MessageViewModel
     private val okHttpClient = OkHttpClient()
     private var webSocket: WebSocket? = null
 
@@ -36,12 +36,10 @@ class MainActivity : AppCompatActivity() {
         val roomId= intent.extras?.getString("room")
         binding.chattitle.text= ">You're in: ${roomId}"
 
-
-
         //Connecting to data base to get saved messages
         val database = Firebase.database
-        val reference = database.getReference("messages")
-
+        val reference = database.getReference("chat-"+roomId.toString())
+        
         reference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -64,6 +62,7 @@ class MainActivity : AppCompatActivity() {
 
         //Observing changes in the message LiveData
         mainViewModel.message.observe(this) {
+
             var text = binding.textMessages.text.toString()
             text +=
                 if (it.first) {
@@ -96,7 +95,6 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Type something", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
     //Disconnect user from server when he closes this activity
     override fun onStop() {
@@ -125,13 +123,13 @@ class MainActivity : AppCompatActivity() {
         //Creating tje connection with the server
         val webSocketUrl = "wss://free.blr2.piesocket.com/v3/${roomId}?api_key=mnz7ic1KF5deNSqSneGJdq5UhEzMYdqma4qYCc2m&notify_self=1"
 
-        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        mainViewModel = ViewModelProvider(this)[MessageViewModel::class.java]
         webSocketListener = WebSocketListener(mainViewModel)
 
         mainViewModel.socketStatus.observe(this) {
             val oldtext = binding.textMessages.text.toString()
             binding.textMessages.text =
-                oldtext + "\n" + if (it) "You was connected\n" else "You was disconnected\n"
+                oldtext + "\n" + if (it) "You are connected\n" else "You were disconnected\n"
         }
 
         webSocket = okHttpClient.newWebSocket(createRequest(webSocketUrl)
